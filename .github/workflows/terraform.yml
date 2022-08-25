@@ -26,7 +26,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: 'Terraform Format'
-      uses: aswinreddy123/Datafactory@master
+      uses: aswinreddy123/Datafactory@main
       with:
         tf_actions_version: 0.14.8
         tf_actions_subcommand: 'fmt'
