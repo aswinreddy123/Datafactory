@@ -1,36 +1,27 @@
-# This is a basic workflow to help you get started with Actions
-
 name: 'Terraform'
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: 
+    branches:
     - main
   pull_request:
 
-  
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   terraform:
     name: 'Terraform'
     env:
-      ARM_CLIENT_ID: ${{secrets.ARM_AD_CLIENT_ID}}
-      ARM_CLIENT_SECRET: ${{secrets.AZURE_AD_CLIENT_SECRET}}
-      ARM_SUBSCRIPTION_ID: ${{secrets.AZURE_SUBSCRIPTION_ID}}
-      ARM_TENANT_ID: ${{secrets.AZURE_AD_TENET_ID}}
+      ARM_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_AD_TENANT_ID }}
     runs-on: ubuntu-latest
     environment: dev
 
-    # Use the bash shell regardless whether the GIThub
     defaults:
       run:
         shell: bash
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-
     - name: Checkout
       uses: actions/checkout@v2
 
@@ -40,8 +31,7 @@ jobs:
         tf_actions_version: 0.14.8
         tf_actions_subcommand: 'fmt'
         tf_actions_working_dir: "./terraform"
-    
-     eploy your project.
+        
     - name: 'Terraform Init'
       uses: aswinreddy123/Datafactory@master
       with:
@@ -70,4 +60,6 @@ jobs:
         tf_actions_version: 0.14.8
         tf_actions_subcommand: 'apply'
         tf_actions_working_dir: "./terraform"
+
+
 
