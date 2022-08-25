@@ -1,5 +1,5 @@
 # Create Azure RG
-resource "azurerm_resource_group" "AZ-700" {
+resource "azurerm_resource_group" "QuickCloudPOCsADF" {
   name     = "QuickCloudPOCsADF-RG"
   location = "WestUS3"
 }
